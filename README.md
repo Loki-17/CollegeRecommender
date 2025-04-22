@@ -6,7 +6,8 @@ __Contributors:__
 - Gokulakkrishna.S
 
 __Project Structure__
-`college-recommendation-system/
+```
+college-recommendation-system/
 ├── app.py                 # Main Flask application
 ├── data_processing.py     # Data cleaning and preprocessing functions
 ├── models.py              # Data models and classes
@@ -20,7 +21,8 @@ __Project Structure__
 ├── attached_assets/       # Data files
 │   ├── indian_colleges_reviews.csv
 │   └── indian_colleges_reviews_v2.csv
-└── requirements.txt       # Project dependencies`
+└── requirements.txt       # Project dependencies
+```
 
 __Installation and Setup__
 Clone the repository:
@@ -40,6 +42,8 @@ Open your browser and navigate to __http://localhost:5000__
 
 Now, Try entering queries like:
 
-(i) "I'm looking for a top engineering college with good facilities"
+(i) "I'm looking for a top engineering college with good facilities" 
+
 (ii) "I want a college with strong computer science program and good placements"
+
 (iii) "I need a college in South India with good infrastructure"
