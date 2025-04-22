@@ -1,0 +1,251 @@
+{% extends 'layout.html' %}
+
+{% block title %}Recommendations{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- User Input Summary -->
+    <section class="mb-5">
+        <h1 class="mb-4">Your College Recommendations</h1>
+        <div class="card bg-dark mb-4">
+            <div class="card-body">
+                <h5 class="card-title mb-3">Based on your preferences:</h5>
+                <p class="card-text">{{ user_input }}</p>
+                <hr class="my-3">
+                <h6>How We Generate Recommendations:</h6>
+                <p class="mb-2 small">Our college recommendations are based on three key factors:</p>
+                <ul class="small">
+                    <li><strong>Reputation Score (50%):</strong> Real-world college rankings and reputation</li>
+                    <li><strong>User Ratings (30%):</strong> Average ratings from student reviews</li>
+                    <li><strong>Preference Match (20%):</strong> How well your preferences match with student reviews</li>
+                </ul>
+                <p class="small text-muted">We also ensure diversity in recommendations by including different types of institutions.</p>
+                <a href="{{ url_for('index') }}#recommendation-form" class="btn btn-outline-primary mt-2">Modify Preferences</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualization Section -->
+    <section class="mb-5">
+        <h2 class="mb-4">College Comparison</h2>
+        <div class="card bg-dark">
+            <div class="card-body">
+                <ul class="nav nav-tabs" id="comparisonTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="match-tab" data-bs-toggle="tab" 
+                                data-bs-target="#match" type="button" role="tab" 
+                                aria-controls="match" aria-selected="true">Match Scores</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reputation-tab" data-bs-toggle="tab" 
+                                data-bs-target="#reputation" type="button" role="tab" 
+                                aria-controls="reputation" aria-selected="false">Reputation Scores</button>
+                    </li>
+                </ul>
+                <div class="tab-content p-3" id="comparisonTabContent">
+                    <div class="tab-pane fade show active" id="match" role="tabpanel" aria-labelledby="match-tab">
+                        <canvas id="matchScoreChart" height="200"></canvas>
+                    </div>
+                    <div class="tab-pane fade" id="reputation" role="tabpanel" aria-labelledby="reputation-tab">
+                        <canvas id="reputationScoreChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="mb-5">
+        <h2 class="mb-4">Top 5 College Recommendations</h2>
+        <div class="row">
+            {% for college in colleges %}
+            <div class="col-md-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="d-flex align-items-center mb-3">
+                                    <h3 class="card-title me-3">{{ loop.index }}. {{ college.college_name }}</h3>
+                                    <span class="badge bg-primary">{{ college.college_abbreviation }}</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="me-3">
+                                        <span class="badge bg-info">User Rating: {{ college.avg_rating|round(1) }}/5</span>
+                                    </div>
+                                    <div class="ratings">
+                                        {% for i in range(5) %}
+                                            {% if i < college.avg_rating|int %}
+                                                <i class="fas fa-star text-warning"></i>
+                                            {% elif i < college.avg_rating|round(0, 'common') %}
+                                                <i class="fas fa-star-half-alt text-warning"></i>
+                                            {% else %}
+                                                <i class="far fa-star text-warning"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- Reputation Score -->
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="me-3">
+                                        <span class="badge bg-success">Reputation Score: {{ college.reputation_score|default(40) }}/100</span>
+                                    </div>
+                                    <div class="progress flex-grow-1" style="height: 8px;">
+                                        <div class="progress-bar bg-success" role="progressbar" 
+                                             style="width: {{ college.reputation_score|default(40) }}%;" 
+                                             aria-valuenow="{{ college.reputation_score|default(40) }}" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <p class="card-text">{{ college.review }}</p>
+                                <p class="text-muted">
+                                    <i class="fas fa-comment-alt me-1"></i> {{ college.review_count }} reviews available
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="match-score-circle position-relative mb-2" data-score="{{ college.score }}">
+                                        <svg width="120" height="120" viewBox="0 0 120 120">
+                                            <circle cx="60" cy="60" r="54" fill="none" stroke="#e6e6e6" stroke-width="12" />
+                                            <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gradient{{ loop.index }})" stroke-width="12" 
+                                                stroke-dasharray="{{ 339.292 * college.score / 100 }} 339.292" stroke-dashoffset="0" />
+                                            <defs>
+                                                <linearGradient id="gradient{{ loop.index }}" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                    <stop offset="0%" stop-color="#4CAF50" />
+                                                    <stop offset="100%" stop-color="#8BC34A" />
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                        <div class="position-absolute top-50 start-50 translate-middle">
+                                            <h3 class="mb-0">{{ college.score }}%</h3>
+                                            <p class="mb-0 small">Match</p>
+                                        </div>
+                                    </div>
+                                    <p class="mb-0 small text-center">Match Score</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center mb-5 py-4">
+        <h2 class="mb-4">Not finding what you're looking for?</h2>
+        <p class="lead mb-4">Try refining your preferences for more tailored recommendations.</p>
+        <a href="{{ url_for('index') }}#recommendation-form" class="btn btn-primary btn-lg">Try Again</a>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Chart.js Graphs
+    document.addEventListener('DOMContentLoaded', function() {
+        const matchCtx = document.getElementById('matchScoreChart').getContext('2d');
+        const reputationCtx = document.getElementById('reputationScoreChart').getContext('2d');
+        
+        // Get college data from template
+        const colleges = [
+            {% for college in colleges %}
+                {
+                    name: "{{ college.college_name }}",
+                    matchScore: {{ college.score }},
+                    reputationScore: {{ college.reputation_score|default(40) }},
+                    abbreviation: "{{ college.college_abbreviation }}"
+                }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ];
+        
+        // Sort colleges by match score for better visualization
+        const collegesByMatch = [...colleges].sort((a, b) => b.matchScore - a.matchScore);
+        
+        // Sort colleges by reputation score for second chart
+        const collegesByReputation = [...colleges].sort((a, b) => b.reputationScore - a.reputationScore);
+        
+        // Chart config function
+        function createBarChart(ctx, data, valueKey, label, colorStart, colorEnd) {
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(college => college.abbreviation || college.name.substring(0, 15)),
+                    datasets: [{
+                        label: label,
+                        data: data.map(college => college[valueKey]),
+                        backgroundColor: generateGradientColors(data.length, colorStart, colorEnd, 0.8),
+                        borderColor: generateGradientColors(data.length, colorStart, colorEnd, 1),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const college = data[context.dataIndex];
+                                    return college.name + ': ' + context.formattedValue + 
+                                          (valueKey === 'reputationScore' ? '/100' : '%');
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + (valueKey === 'reputationScore' ? '' : '%');
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Helper to generate gradient colors
+        function generateGradientColors(count, startColor, endColor, alpha) {
+            const result = [];
+            for (let i = 0; i < count; i++) {
+                const ratio = i / (count - 1);
+                result.push(`rgba(${interpolateColor(startColor, endColor, ratio)}, ${alpha})`);
+            }
+            return result;
+        }
+        
+        // Linear interpolation between two RGB colors
+        function interpolateColor(color1, color2, ratio) {
+            return color1.map((c1, i) => Math.round(c1 + (color2[i] - c1) * ratio)).join(', ');
+        }
+        
+        // Create Match Score Chart
+        createBarChart(
+            matchCtx, 
+            collegesByMatch, 
+            'matchScore', 
+            'Match Score (%)', 
+            [76, 175, 80],  // Green start
+            [255, 193, 7]   // Amber end
+        );
+        
+        // Create Reputation Score Chart
+        createBarChart(
+            reputationCtx, 
+            collegesByReputation, 
+            'reputationScore', 
+            'Reputation Score (0-100)', 
+            [33, 150, 243],  // Blue start
+            [156, 39, 176]   // Purple end
+        );
+    });
+</script>
+{% endblock %}

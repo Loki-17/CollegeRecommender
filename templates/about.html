@@ -1,0 +1,203 @@
+{% extends 'layout.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- About Section -->
+    <section class="mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-5 fw-bold mb-4">About College Recommender</h1>
+                <p class="lead mb-4">Our mission is to help students find the perfect college match based on their preferences and needs.</p>
+                <p>College Recommender uses advanced AI and machine learning techniques to analyze your preferences and match them with our extensive database of Indian colleges. We process thousands of student reviews and college profiles to deliver personalized recommendations.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://images.unsplash.com/photo-1739169294333-e73c270e90e8" alt="College Students" class="img-fluid rounded shadow-lg" style="max-height: 350px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section (Detailed) -->
+    <section class="mb-5 py-4">
+        <h2 class="mb-4">How Our Recommendation System Works</h2>
+        <div class="card bg-dark mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h4>The Science Behind Our Recommendations</h4>
+                        <p>Our college recommendation system uses a linear regression model combined with natural language processing to analyze your preferences. Here's how it works:</p>
+                        <ol>
+                            <li class="mb-2"><strong>Data Collection:</strong> We gather data from thousands of student reviews across Indian colleges.</li>
+                            <li class="mb-2"><strong>Text Processing:</strong> We clean and process this text data to extract meaningful features.</li>
+                            <li class="mb-2"><strong>Feature Extraction:</strong> Our system identifies important keywords and patterns in college reviews.</li>
+                            <li class="mb-2"><strong>Linear Regression Model:</strong> We use linear regression to predict how well each college matches your preferences.</li>
+                            <li class="mb-2"><strong>Ranking:</strong> Colleges are ranked based on their predicted match score with your input.</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-5 d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1707905851536-ee3aa99efc92" alt="AI Processing" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dataset Section -->
+    <section class="mb-5 py-4">
+        <h2 class="mb-4">Our Dataset</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 bg-dark">
+                    <div class="card-body">
+                        <h4 class="card-title">Comprehensive College Database</h4>
+                        <p class="card-text">Our system is built on a database containing information about hundreds of Indian colleges, including:</p>
+                        <ul>
+                            <li>College names and abbreviations</li>
+                            <li>Student reviews and ratings</li>
+                            <li>Sentiment analysis of reviews</li>
+                            <li>Statistical measures of college performance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 bg-dark">
+                    <div class="card-body">
+                        <h4 class="card-title">Continuously Updated</h4>
+                        <p class="card-text">We regularly update our dataset to ensure that our recommendations are based on the most current information available. Our sources include:</p>
+                        <ul>
+                            <li>Authenticated student reviews</li>
+                            <li>Official college information</li>
+                            <li>Academic performance metrics</li>
+                            <li>Campus facilities and infrastructure details</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="mb-5 py-4">
+        <h2 class="mb-4">Key Features</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 bg-dark">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-robot fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="card-title">AI-Powered Analysis</h4>
+                        <p class="card-text">Our system uses advanced AI to understand your preferences and match them with the right colleges.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 bg-dark">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-chart-bar fa-3x text-success"></i>
+                        </div>
+                        <h4 class="card-title">Data-Driven Results</h4>
+                        <p class="card-text">Recommendations are based on real data and student experiences, not just marketing materials.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 bg-dark">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-user-graduate fa-3x text-info"></i>
+                        </div>
+                        <h4 class="card-title">Personalized Matching</h4>
+                        <p class="card-text">Every recommendation is tailored to your specific preferences and academic interests.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-5 py-4">
+        <h2 class="mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item bg-dark">
+                <h3 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        How accurate are the recommendations?
+                    </button>
+                </h3>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Our recommendations are based on a linear regression model that analyzes patterns in student reviews and college data. The accuracy depends on how specific your input is and how well you describe your preferences. We continuously improve our model based on user feedback.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-dark">
+                <h3 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        What information should I include in my preferences?
+                    </button>
+                </h3>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        The more detailed your preferences, the better our recommendations will be. Consider including:
+                        <ul>
+                            <li>Academic interests and desired courses</li>
+                            <li>Location preferences</li>
+                            <li>Campus facilities you care about</li>
+                            <li>Extracurricular activities you're interested in</li>
+                            <li>Budget considerations</li>
+                            <li>Importance of placement opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-dark">
+                <h3 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        How many colleges are in your database?
+                    </button>
+                </h3>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Our database includes hundreds of Indian colleges, ranging from technical institutes to universities offering various programs. We continuously update our database to add more colleges and keep information current.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-dark">
+                <h3 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Can I get recommendations for specific courses?
+                    </button>
+                </h3>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes! When describing your preferences, be specific about the courses or programs you're interested in. Our system will analyze reviews and data related to those specific programs to provide targeted recommendations.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-dark">
+                <h3 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Is this service free to use?
+                    </button>
+                </h3>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, our college recommendation service is completely free to use. We believe in making quality education guidance accessible to all students.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center mb-5 py-5">
+        <h2 class="mb-4">Ready to Find Your Perfect College Match?</h2>
+        <p class="lead mb-4">Let our AI-powered system help you discover the best college for your future.</p>
+        <a href="{{ url_for('index') }}#recommendation-form" class="btn btn-primary btn-lg">Get Started Now</a>
+    </section>
+</div>
+{% endblock %}

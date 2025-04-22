@@ -1,0 +1,221 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <section class="row align-items-center mb-5 py-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-4">Find Your Perfect College Match</h1>
+            <p class="lead mb-4">Tell us what you're looking for in a college, and we'll recommend the best options for you using AI-powered analysis.</p>
+            <div class="d-flex">
+                <a href="#recommendation-form" class="btn btn-primary me-3">Get Started</a>
+                <a href="{{ url_for('about') }}" class="btn btn-outline-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="col-lg-6 mt-4 mt-lg-0 text-center">
+            <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290" alt="College Campus" class="img-fluid rounded shadow-lg" style="max-height: 400px;">
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="mb-5 py-4">
+        <h2 class="text-center mb-5">How It Works</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card h-100 border-0 bg-dark">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <img src="{{ url_for('static', filename='svg/search.svg') }}" alt="Input" class="img-fluid" style="height: 60px;">
+                        </div>
+                        <h5 class="card-title">1. Share Your Preferences</h5>
+                        <p class="card-text">Tell us what you're looking for in your ideal college experience.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 border-0 bg-dark">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <img src="{{ url_for('static', filename='svg/college.svg') }}" alt="Analysis" class="img-fluid" style="height: 60px;">
+                        </div>
+                        <h5 class="card-title">2. AI Analysis</h5>
+                        <p class="card-text">Our AI model analyzes your input against our database of colleges.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 border-0 bg-dark">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <img src="{{ url_for('static', filename='svg/recommendation.svg') }}" alt="Recommendations" class="img-fluid" style="height: 60px;">
+                        </div>
+                        <h5 class="card-title">3. Get Recommendations</h5>
+                        <p class="card-text">Receive personalized college recommendations that match your preferences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 border-0 bg-dark">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2" alt="Decision" class="img-fluid" style="height: 60px;">
+                        </div>
+                        <h5 class="card-title">4. Make Your Decision</h5>
+                        <p class="card-text">Compare options and find the perfect college for your future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Colleges Section -->
+    <section class="mb-5 py-4">
+        <h2 class="text-center mb-4">Featured Colleges</h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1462536943532-57a629f6cc60" class="card-img-top" alt="IIT Madras">
+                    <div class="card-body">
+                        <h5 class="card-title">IIT Madras</h5>
+                        <p class="card-text">Top-rated engineering and science college with excellent placement records.</p>
+                        <div class="d-flex align-items-center">
+                            <div class="me-2">
+                                <span class="badge bg-primary">Rating: 5.0</span>
+                            </div>
+                            <div class="ratings">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1535982330050-f1c2fb79ff78" class="card-img-top" alt="BMS College of Engineering">
+                    <div class="card-body">
+                        <h5 class="card-title">BMS College of Engineering</h5>
+                        <p class="card-text">One of the best colleges in India with excellent faculty and infrastructure.</p>
+                        <div class="d-flex align-items-center">
+                            <div class="me-2">
+                                <span class="badge bg-primary">Rating: 4.0</span>
+                            </div>
+                            <div class="ratings">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1677594334053-afe4b41aa0a3" class="card-img-top" alt="AIIMS Jodhpur">
+                    <div class="card-body">
+                        <h5 class="card-title">AIIMS Jodhpur</h5>
+                        <p class="card-text">Great teaching faculty and staff. Very well disciplined medical institute.</p>
+                        <div class="d-flex align-items-center">
+                            <div class="me-2">
+                                <span class="badge bg-primary">Rating: 5.0</span>
+                            </div>
+                            <div class="ratings">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendation Form Section -->
+    <section id="recommendation-form" class="bg-dark rounded p-4 shadow-lg mb-5">
+        <h2 class="text-center mb-4">Get Your College Recommendations</h2>
+        <form action="{{ url_for('recommend') }}" method="POST">
+            <div class="form-group mb-4">
+                <label for="user_input" class="form-label">Describe what you're looking for in a college:</label>
+                <textarea class="form-control" id="user_input" name="user_input" rows="4" required placeholder="Example: I'm looking for a college with good engineering programs, modern facilities, and strong placement opportunities. I prefer a college with supportive faculty and a good campus environment."></textarea>
+                <div class="form-text">Be specific about your interests, preferred location, facilities, course preferences, etc.</div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg px-5">
+                    <i class="fas fa-search me-2"></i>Find My College Match
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="mb-5 py-4">
+        <h2 class="text-center mb-4">What Students Say</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="ratings me-2">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                            </div>
+                            <span>4.5/5</span>
+                        </div>
+                        <p class="card-text">"This tool helped me find my dream college! The recommendations were spot on, and I'm now studying at IIT Delhi. Couldn't be happier with my choice."</p>
+                        <p class="card-subtitle text-muted">- Rahul S., Engineering Student</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="ratings me-2">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <span>5.0/5</span>
+                        </div>
+                        <p class="card-text">"I was confused about which medical college to choose. The College Recommender analyzed my preferences and suggested AIIMS. Best decision of my life!"</p>
+                        <p class="card-subtitle text-muted">- Priya K., Medical Student</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="ratings me-2">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <span>4.0/5</span>
+                        </div>
+                        <p class="card-text">"The recommendations were really helpful in narrowing down my options. I appreciated the detailed information about each college. Thanks!"</p>
+                        <p class="card-subtitle text-muted">- Amit R., Business Student</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

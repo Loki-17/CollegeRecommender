@@ -1,0 +1,105 @@
+/* Custom styles for College Recommender */
+
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card hover effect */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Ratings styling */
+.ratings {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Match score circle styling */
+.match-score-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.match-score-circle circle {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dasharray 1s ease;
+}
+
+/* Hero section styling */
+.hero-section {
+    background-color: rgba(33, 37, 41, 0.8);
+    border-radius: 10px;
+    padding: 3rem;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+    background: linear-gradient(to right, var(--bs-primary), var(--bs-info));
+}
+
+/* Custom button hover effect */
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(var(--bs-primary-rgb), 0.4);
+}
+
+/* Section transitions */
+section {
+    transition: opacity 0.5s ease;
+}
+
+/* Custom styling for recommendations page */
+.recommendation-card {
+    border-left: 5px solid var(--bs-primary);
+}
+
+/* Accordion custom styling */
+.accordion-button:not(.collapsed) {
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--bs-light);
+}
+
+/* Footer styling */
+footer {
+    margin-top: auto;
+}
+
+/* Custom Font Sizes */
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    font-weight: 700;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Form styling */
+.form-control:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Text highlights */
+.text-highlight {
+    background: linear-gradient(120deg, rgba(var(--bs-info-rgb), 0.2) 0%, rgba(var(--bs-info-rgb), 0.2) 100%);
+    padding: 0.2em 0;
+}
